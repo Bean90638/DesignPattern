@@ -8,15 +8,19 @@
 ## 架構
 
 1. 使用interface(介面)將各邏輯建立成獨立一個類別物件
+
    ![](../MD_Img/StrategyPattern01.png)
 
 2. 在獨立出來的類別，建立計算邏輯的方法
+
    ![](../MD_Img/StrategyPattern02.png)
 
 3. 建構子時不傳入名稱或代號，改成傳入物件
+
    ![](../MD_Img/StrategyPattern03.png)
 
 4. 執行動作時，直接執行類的的方法!
+
    ![](../MD_Img/StrategyPattern04.png)
 
 ## 優點
