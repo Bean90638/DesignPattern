@@ -27,10 +27,11 @@ public class Hero
         {
             case Skill.Colliding:
                 Console.WriteLine($"對{targetHero.name}使用了 衝撞攻擊!");
-                targetHero.lostHP(getStrength() - targetHero.GetDefense());
+                targetHero.lostHP(GetStrength() - targetHero.GetDefense());
                 break;
             case Skill.Waterball:
                 Console.WriteLine($"對{targetHero.name}使用了 水球攻擊!");
+                targetHero.lostHP(GetWisom() * 2);
                 break;
             default:
                 break;
@@ -41,26 +42,28 @@ public class Hero
 
     private void lostHP(int hp)
     {
-        SetHP(GetHP() - hp);
+        SetHP(GetHp() - hp);
     }
 
     private void SetHP(int hp)
     {
-        this.HP = hp;
-        if (!isAlive())
+        this.HP = hp < 0 ? 0 : hp;
+        if (!IsAlive())
             Console.WriteLine($"{GetName()}已陣亡");
     }
 
     public string GetName() => this.name;
 
-    public bool isAlive() => this.HP > 0;
+    public bool IsAlive() => this.HP > 0;
 
-    public int GetHP() => this.HP <= 0 ? 0 : this.HP;
-    
-    public int GetMP() => this.MP <= 0 ? 0 : this.MP;
-    
+    public int GetHp() => this.HP <= 0 ? 0 : this.HP;
+
+    public int GetMp() => this.MP <= 0 ? 0 : this.MP;
+
     public int GetDefense() => this.defense;
-    
-    public int getStrength() => this.strength;
+
+    public int GetStrength() => this.strength;
+
+    public int GetWisom() => this.wisom;
 }
 

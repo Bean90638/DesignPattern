@@ -32,6 +32,6 @@
 
     private bool isGameOver()
     {
-        return !heroes[0].isAlive() || !heroes[1].isAlive();
+        return !heroes[0].IsAlive() || !heroes[1].IsAlive();
     }
 }
