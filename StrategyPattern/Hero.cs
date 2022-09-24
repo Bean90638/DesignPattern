@@ -1,10 +1,4 @@
-﻿public enum Skill
-{
-    Colliding,
-    Waterball
-}
-
-public class Hero
+﻿public class Hero
 {
     private string name;
     private int HP = 500;
@@ -12,10 +6,10 @@ public class Hero
     private int strength = 150;
     private int wisom = 80;
     private int defense = 50;
-    private Skill skill;
+    private ISkill skill;
 
     //建構子
-    public Hero(string name, Skill skill)
+    public Hero(string name, ISkill skill)
     {
         this.name = name;
         this.skill = skill;
@@ -23,24 +17,13 @@ public class Hero
 
     public void attack(Hero targetHero)
     {
-        switch (skill)
-        {
-            case Skill.Colliding:
-                Console.WriteLine($"對{targetHero.name}使用了 衝撞攻擊!");
-                targetHero.lostHP(GetStrength() - targetHero.GetDefense());
-                break;
-            case Skill.Waterball:
-                Console.WriteLine($"對{targetHero.name}使用了 水球攻擊!");
-                targetHero.lostHP(GetWisom() * 2);
-                break;
-            default:
-                break;
-        }
+        int injunt = skill.attack(this, targetHero);
 
+        Console.WriteLine($"{GetName()}使用{skill}對{targetHero.name}造成了{injunt}點傷害");
         Console.WriteLine($"{targetHero.name}血量剩下{targetHero.HP}");
     }
 
-    private void lostHP(int hp)
+    public void lostHP(int hp)
     {
         SetHP(GetHp() - hp);
     }
@@ -48,8 +31,6 @@ public class Hero
     private void SetHP(int hp)
     {
         this.HP = hp < 0 ? 0 : hp;
-        if (!IsAlive())
-            Console.WriteLine($"{GetName()}已陣亡");
     }
 
     public string GetName() => this.name;
@@ -66,4 +47,3 @@ public class Hero
 
     public int GetWisom() => this.wisom;
 }
-

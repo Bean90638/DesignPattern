@@ -25,9 +25,9 @@
     {
         Hero attackingHero = heroes[heroIndex];
         Hero attackedHero = heroes[heroIndex == 0 ? 1 : 0];
-        attackedHero.attack(attackedHero);
+        attackingHero.attack(attackedHero);
 
-        Console.WriteLine($"接下來換 {attackedHero.GetName()}");
+        if (!isGameOver()) Console.WriteLine($"接下來換{attackedHero.GetName()}攻擊");
     }
 
     private bool isGameOver()
