@@ -1,4 +1,4 @@
-﻿public class SkillWaterball : ISkill
+﻿public class Waterball : ISkill
 {
     public int attack(Hero attackingHero, Hero attackedHero)
     {
